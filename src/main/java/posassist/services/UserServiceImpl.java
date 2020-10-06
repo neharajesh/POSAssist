@@ -1,12 +1,19 @@
 package posassist.services;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
+import javax.transaction.Transactional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import posassist.dto.UserDTO;
+import posassist.entities.Role;
 import posassist.entities.User;
+import posassist.enums.UserType;
+import posassist.exceptions.BadRequestException;
 import posassist.exceptions.ResourceNotFoundException;
 import posassist.repositories.RoleRepository;
 import posassist.repositories.UserRepository;
@@ -39,9 +46,75 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	@Transactional
 	public User createUser(UserDTO userDTO) {
-		// TODO Auto-generated method stub
-		return null;
+		if(userRepository.checkUserExistsByEmail(userDTO.getEmailId())) 
+			throw new BadRequestException("This email id has been taken! ");
+		
+		//Creating a new account.
+		User user = User.builder()
+				.name(userDTO.getName())
+				.emailId(userDTO.getEmailId())
+				.userName(userDTO.getUserName())
+				.password(passwordEncoder.encode(userDTO.getPassword()))
+				.phoneNo(userDTO.getPhoneNo())
+				.address(userDTO.getAddress())	
+				.build();
+		
+		Set<String> strRole = userDTO.getRole();
+		Set<Role> role = new HashSet<Role>();
+		
+		strRole.forEach(roleType -> {
+			switch(roleType) {
+			case "ADMIN" :
+				Role adminRole = roleRepository.findRoleByName(UserType.ADMIN)
+					.orElseThrow(() -> new RuntimeException("Role not found! "));
+				role.add(adminRole);
+				break;
+				
+			case "CUSTOMER":
+				Role customerRole = roleRepository.findRoleByName(UserType.CUSTOMER)
+					.orElseThrow(() -> new RuntimeException("Role not found."));
+				role.add(customerRole);
+				break;
+			
+			case "STAFF" :
+				Role staffRole = roleRepository.findRoleByName(UserType.STAFF)
+					.orElseThrow(() -> new RuntimeException("Role not found"));
+				role.add(staffRole);
+				break;
+				
+			case "DELIVERY" :
+				Role deliveryRole = roleRepository.findRoleByName(UserType.DELIVERY)
+					.orElseThrow(() -> new RuntimeException("Role not found"));
+				role.add(deliveryRole);
+				break;
+			}
+		});
+		user.setRole(role);
+		
+		return userRepository.save(user);
+	}
+
+	@Override
+	@Transactional
+	public User updateUserDetails(Long id, UserDTO userDTO) {
+		User user = findUserById(id);
+		user.setName(userDTO.getName());
+		user.setEmailId(userDTO.getEmailId());
+		user.setPhoneNo(userDTO.getPhoneNo());
+		user.setAddress(userDTO.getAddress());
+		user.setUserName(userDTO.getUserName());
+		user.setPassword(userDTO.getPassword());
+		return userRepository.save(user);
+		
+	}
+
+	@Override
+	public void deleteUser(Long id) {
+		User user = findUserById(id);
+		userRepository.delete(user);
+		
 	}
 
 }

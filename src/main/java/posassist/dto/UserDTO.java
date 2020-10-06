@@ -1,11 +1,12 @@
 package posassist.dto;
 
+import java.util.Set;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
-import posassist.enums.UserType;
 
 @Data
 public class UserDTO {
@@ -32,6 +33,6 @@ public class UserDTO {
     @Size(max = 60)
 	private String address;
 	
-	private UserType userType;
+	private Set<String> role;
 	
 }

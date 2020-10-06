@@ -3,5 +3,5 @@
 package posassist.enums;
 
 public enum UserType {
-	ADMIN, CUSTOMER, DELIVERY
+	ADMIN, STAFF, CUSTOMER, DELIVERY
 }

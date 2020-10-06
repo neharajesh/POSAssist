@@ -11,5 +11,5 @@ import posassist.exceptions.ResourceNotFoundException;
 public interface RoleRepository extends JpaRepository<Role, Long>{
 	Optional<Role> findRoleById(Long id) throws ResourceNotFoundException;
 	
-	Optional<Role> findRoleByName(UserType role) throws ResourceNotFoundException;
+	Optional<Role> findRoleByName(UserType role);
 }

@@ -3,12 +3,15 @@ package posassist.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import posassist.enums.OrderType;
@@ -16,6 +19,7 @@ import posassist.enums.OrderType;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "order")
 public class Order {
@@ -27,10 +31,11 @@ public class Order {
 	
 	private String orderDetails;
 	
+	@Enumerated(EnumType.STRING)
+	private OrderType orderType;
+	
 	private Date dateOfOrder;
 	
 	private Double total;
-	
-	private OrderType orderType;
 	
 }

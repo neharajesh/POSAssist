@@ -10,6 +10,10 @@ public interface OrderService {
 	
 	Order findOrderByDate(Date date);
 	
-	Long saveOrder(OrderDTO orderDTO);
+	Order saveOrder(OrderDTO orderDTO);
+	
+	Order updateOrder(Long id, OrderDTO orderDTO);
+	
+	void deleteOrder(Long id);
 	
 }
