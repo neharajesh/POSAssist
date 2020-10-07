@@ -13,6 +13,8 @@ public interface ItemsService {
 	
 	Items findItemByName(String itemName) throws ResourceNotFoundException;
 	
+	List<Items> findByAvailability(Boolean availabe);
+	
 	Items saveNewItem(ItemsDTO itemsDTO);
 	
 	Items updateItem(Long id, ItemsDTO itemsDTO);

@@ -1,6 +1,8 @@
 package posassist.entities;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -27,15 +30,19 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String orderName;	//customers can save their order name. can be combo name also
+	private String orderName;
 	
 	private String orderDetails;
 	
 	@Enumerated(EnumType.STRING)
 	private OrderType orderType;
 	
+	@OneToMany
+	private Set<OrderItems> orderitems = new HashSet<OrderItems>();
+	
 	private Date dateOfOrder;
 	
 	private Double total;
+	
 	
 }

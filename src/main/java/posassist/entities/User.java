@@ -1,5 +1,3 @@
-// Accounts Microservice
-
 package posassist.entities;
 
 import java.util.HashSet;
@@ -34,8 +32,6 @@ public class User {
 	private String name;
 	
 	private String emailId;
-	
-	private String userName;
 	
 	private String password;
 	

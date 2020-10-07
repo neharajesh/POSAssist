@@ -67,6 +67,11 @@ public class ItemsServiceImpl implements ItemsService{
 		Items item = findItemById(id);
 		itemsRepository.delete(item);	
 	}
+
+	@Override
+	public List<Items> findByAvailability(Boolean availabe) {
+		return itemsRepository.findByAvailability(availabe);
+	}
 	
 	
 }

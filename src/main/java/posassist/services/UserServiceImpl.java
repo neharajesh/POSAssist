@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService{
 		User user = User.builder()
 				.name(userDTO.getName())
 				.emailId(userDTO.getEmailId())
-				.userName(userDTO.getUserName())
 				.password(passwordEncoder.encode(userDTO.getPassword()))
 				.phoneNo(userDTO.getPhoneNo())
 				.address(userDTO.getAddress())	
@@ -99,13 +98,13 @@ public class UserServiceImpl implements UserService{
 	@Override
 	@Transactional
 	public User updateUserDetails(Long id, UserDTO userDTO) {
-		User user = findUserById(id);
-		user.setName(userDTO.getName());
-		user.setEmailId(userDTO.getEmailId());
-		user.setPhoneNo(userDTO.getPhoneNo());
-		user.setAddress(userDTO.getAddress());
-		user.setUserName(userDTO.getUserName());
-		user.setPassword(userDTO.getPassword());
+		User user = User.builder()
+				.name(userDTO.getName())
+				.emailId(userDTO.getEmailId())
+				.address(userDTO.getAddress())
+				.phoneNo(userDTO.getPhoneNo())
+				.password(passwordEncoder.encode(userDTO.getPassword()))
+				.build();
 		return userRepository.save(user);
 		
 	}

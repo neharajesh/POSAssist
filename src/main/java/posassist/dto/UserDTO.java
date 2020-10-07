@@ -15,10 +15,6 @@ public class UserDTO {
 	private String name;
 	
 	@NotBlank
-	@Size(min = 3, max = 50, message = "Name must be 3 To 50 characters long")
-	private String userName;
-	
-	@NotBlank
     @Size(min = 6, max = 40, message = "Password should be 6 to 40 characters long")
 	private String password;
 	

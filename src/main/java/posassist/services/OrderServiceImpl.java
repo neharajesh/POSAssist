@@ -2,6 +2,7 @@ package posassist.services;
 
 import java.util.Date;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -12,16 +13,12 @@ import posassist.entities.Order;
 import posassist.enums.OrderType;
 import posassist.exceptions.ResourceNotFoundException;
 import posassist.repositories.OrderRepository;
-import posassist.serviceInterfaces.ItemsService;
 import posassist.serviceInterfaces.OrderService;
 
 public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private OrderRepository orderRepository;
-	
-	@Autowired
-	private ItemsService itemService;
 	
 	@Override
 	public Order findOrderById(Long id) {
@@ -50,8 +47,16 @@ public class OrderServiceImpl implements OrderService{
 				.orderDetails("OrderDetails")	//change value
 				.dateOfOrder(new Date())
 				.total(0.0)	//change value
-				.orderType(OrderType.TRIAL)	//change value
+				.orderType(OrderType.TRIAL)
 				.build();
+//		
+//		OrderType orderType = orderDTO.getOrderType();
+//		orderType.forEach(type -> {
+//			switch(type) {
+//			case DINE_IN :
+//				
+//			}
+//		});
 		
 		return orderRepository.save(order);
 	}
