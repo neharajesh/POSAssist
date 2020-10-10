@@ -1,6 +1,7 @@
 package posassist.services;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -19,6 +20,11 @@ public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	private OrderRepository orderRepository;
+	
+	@Override
+	public List<Order> findAllOrders() {
+		return orderRepository.findAll();
+	}
 	
 	@Override
 	public Order findOrderById(Long id) {

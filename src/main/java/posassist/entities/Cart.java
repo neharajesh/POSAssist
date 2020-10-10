@@ -1,5 +1,8 @@
 package posassist.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import java.util.ArrayList;
 //import java.util.List;
 
@@ -44,7 +47,7 @@ public class Cart {
 				joinColumns = @JoinColumn(name = "order_id"))
 	private Order order;
 	
-	//private List<Items> itemsList = new ArrayList<Items>();
+	private List<OrderItems> itemsList = new ArrayList<OrderItems>();
 	
 	private Boolean checkOut;
 }
