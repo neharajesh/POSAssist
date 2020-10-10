@@ -3,9 +3,11 @@ package posassist.repositories;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import posassist.entities.User;
 
+@Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 	User findUserById(Long id);
 	

@@ -12,6 +12,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.UnsupportedJwtException;
 import posassist.exceptions.BadRequestException;
+import posassist.security.services.UserPrinciple;
 
 public class JwtProvider {
 	

@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.transaction.Transactional;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import posassist.dto.UserDTO;
 import posassist.entities.Role;
@@ -19,6 +20,7 @@ import posassist.repositories.RoleRepository;
 import posassist.repositories.UserRepository;
 import posassist.serviceInterfaces.UserService;
 
+@Service
 public class UserServiceImpl implements UserService{
 	private UserRepository userRepository;
 	private RoleRepository roleRepository;

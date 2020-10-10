@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import posassist.entities.User;
 import posassist.exceptions.ResourceNotFoundException;
 import posassist.repositories.UserRepository;
-import posassist.security.UserPrinciple;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 	

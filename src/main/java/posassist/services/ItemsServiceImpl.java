@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import posassist.dto.ItemsDTO;
 import posassist.entities.Items;
@@ -13,6 +14,7 @@ import posassist.exceptions.ResourceNotFoundException;
 import posassist.repositories.ItemsRepository;
 import posassist.serviceInterfaces.ItemsService;
 
+@Service
 public class ItemsServiceImpl implements ItemsService{
 	
 	@Autowired

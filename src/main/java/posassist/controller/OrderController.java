@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import posassist.dto.OrderDTO;
 import posassist.serviceInterfaces.OrderService;
 
 @CrossOrigin(origins="*", maxAge=3600)
@@ -31,5 +32,21 @@ public class OrderController {
 	@GetMapping("/get/{date}")
 	public @ResponseBody ResponseEntity<?> getByDate(@PathVariable Date date) {
 		return new ResponseEntity<>(orderService.findOrderByDate(date), HttpStatus.OK);
+	}
+	
+	@PostMapping("/create")
+	public @ResponseBody ResponseEntity<?> createOrder(@RequestBody OrderDTO orderDTO) {
+		return new ResponseEntity<>(orderService.saveOrder(orderDTO), HttpStatus.OK);
+	}
+	
+	@PostMapping("/update")
+	public @ResponseBody ResponseEntity<?> updateOrder(@PathVariable Long id, @RequestBody OrderDTO orderDTO) {
+		return new ResponseEntity<>(orderService.updateOrder(id, orderDTO), HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/delete")
+	public @ResponseBody ResponseEntity<?> deleteOrder(@PathVariable Long id) {
+		orderService.deleteOrder(id);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 }

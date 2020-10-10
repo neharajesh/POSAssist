@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import posassist.dto.OrderDTO;
 import posassist.entities.Order;
@@ -16,6 +17,7 @@ import posassist.exceptions.ResourceNotFoundException;
 import posassist.repositories.OrderRepository;
 import posassist.serviceInterfaces.OrderService;
 
+@Service
 public class OrderServiceImpl implements OrderService{
 	
 	@Autowired

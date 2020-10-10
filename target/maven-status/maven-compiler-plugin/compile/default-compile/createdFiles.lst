@@ -10,6 +10,7 @@ posassist\security\WebSecurityConfig.class
 posassist\repositories\RoleRepository.class
 posassist\entities\Cart$CartBuilder.class
 posassist\services\UserServiceImpl.class
+posassist\dto\LoginDTO.class
 posassist\entities\OrderItems$OrderItemsBuilder.class
 posassist\serviceInterfaces\OrderService.class
 posassist\entities\Role$RoleBuilder.class
@@ -23,7 +24,7 @@ posassist\repositories\UserRepository.class
 posassist\dto\OrderDTO.class
 posassist\exceptions\BadRequestException.class
 posassist\entities\User$UserBuilder.class
-posassist\security\UserPrinciple.class
+posassist\dao\response\JwtResponse.class
 posassist\services\OrderItemsServiceImpl.class
 posassist\POSAssistApplication.class
 posassist\security\services\UserDetailsServiceImpl.class

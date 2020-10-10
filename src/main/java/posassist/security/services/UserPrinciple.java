@@ -1,4 +1,4 @@
-package posassist.security;
+package posassist.security.services;
 
 import java.util.Collection;
 import java.util.List;
