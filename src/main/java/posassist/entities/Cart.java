@@ -33,13 +33,9 @@ public class Cart {
 	private Long id;
 	
 	@ManyToOne
-	@JoinTable(name = "users", 
-				joinColumns = @JoinColumn(name = "users_name"))
 	private User customerName;
 	
 	@ManyToOne
-	@JoinTable(name = "users", 
-				joinColumns = @JoinColumn(name = "users_name"))
 	private User staffName;
 	
 	@OneToOne
